@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "filezipper"
+version = "0.1.0"
+description = "Simple utility for zipping files and copying them to destinations"
+readme = "README.md"
+authors = [{ name = "FileZipper Contributors" }]
+license = { text = "MIT" }
+requires-python = ">=3.9"
+
+[project.scripts]
+filezipper = "filezipper.cli:main"
+filezipper-gui = "filezipper.gui:main"
+filezipper-web = "filezipper.web:main"

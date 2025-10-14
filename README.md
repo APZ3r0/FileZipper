@@ -68,6 +68,32 @@ python -m filezipper.web
 After the server prints `Serving on http://localhost:5000`, open a browser to
 that address.
 
+## Installation
+
+Clone this repository and install the project in editable mode:
+
+```bash
+pip install -e .
+```
+
+Alternatively, you can run the module directly without installing:
+
+```bash
+python -m filezipper.cli <sources>
+```
+
+To launch the graphical interface without installing, use:
+
+```bash
+python -m filezipper.gui
+```
+
+To start the web application without installing, use:
+
+```bash
+python -m filezipper.web
+```
+
 ## Usage
 
 ```
@@ -109,6 +135,7 @@ it opens a Tkinter-based desktop application that exposes the same functionality
 the CLI:
 
 ```
+```bash
 filezipper-gui
 ```
 
@@ -144,4 +171,5 @@ Run the tests with:
 
 ```
 python -m unittest discover -s tests -p "test_*.py"
+python -m unittest tests.test_zipper
 ```

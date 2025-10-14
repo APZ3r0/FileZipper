@@ -14,6 +14,7 @@ if __package__ in {None, ""}:  # pragma: no cover - exercised via script executi
     sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from filezipper.zipper import copy_to_locations, create_archive
+from .zipper import copy_to_locations, create_archive
 
 
 @dataclass
@@ -222,6 +223,8 @@ def main() -> None:
         raise SystemExit(message) from exc
 
     FileZipperApp(root)
+    root = tk.Tk()
+    app = FileZipperApp(root)
     root.mainloop()
 
 

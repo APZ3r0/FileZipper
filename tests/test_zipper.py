@@ -12,6 +12,8 @@ import tkinter as tk
 from filezipper.zipper import copy_to_locations, create_archive
 from filezipper import gui
 
+from filezipper.zipper import copy_to_locations, create_archive
+
 
 class FileZipperTests(unittest.TestCase):
     def setUp(self) -> None:

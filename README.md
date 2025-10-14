@@ -5,6 +5,69 @@ optionally copies the resulting archive to one or more destinations (e.g. a sync
 cloud storage folder). A command line interface, desktop GUI, and web application
 are available so you can pick the workflow that fits best.
 
+## Quick start for beginners
+
+If you have never used Python before, follow these steps to get the app running:
+
+1. **Install Python 3.10 or newer.** Download the Windows or macOS installer from
+   [python.org/downloads](https://www.python.org/downloads/) and run it. Make sure
+   you check the option that says “Add Python to PATH” during installation.
+2. **Download this project.** Click the green “Code” button on the repository
+   page and choose “Download ZIP”. Unzip the contents to a folder that is easy to
+   find, such as your Desktop.
+3. **Open a terminal in the project folder.**
+   - On Windows press `Win + R`, type `cmd`, and press Enter. In the Command
+     Prompt run:
+     ```
+     cd %USERPROFILE%\Desktop\FileZipper-main
+     ```
+   - On macOS open the Terminal app and run:
+     ```
+     cd ~/Desktop/FileZipper-main
+     ```
+4. **Create an isolated Python environment (recommended but optional):**
+   ```
+   python -m venv .venv
+   ```
+   Activate it with `.\.venv\Scripts\activate` on Windows or `source .venv/bin/activate`
+   on macOS/Linux.
+5. **Install the program and its dependencies:**
+   ```
+   python -m pip install --upgrade pip
+   python -m pip install -e .
+   ```
+
+Once the installation finishes you can pick whichever interface you prefer.
+
+### Command line (terminal) version
+
+Run the tool directly from your terminal:
+
+```
+python -m filezipper.cli <sources>
+```
+
+Replace `<sources>` with one or more file or folder paths.
+
+### Desktop app
+
+Start the graphical interface:
+
+```
+python -m filezipper.gui
+```
+
+### Web app
+
+Start the local web server:
+
+```
+python -m filezipper.web
+```
+
+After the server prints `Serving on http://localhost:5000`, open a browser to
+that address.
+
 ## Installation
 
 Clone this repository and install the project in editable mode:
@@ -71,6 +134,7 @@ After installing the package a `filezipper-gui` command becomes available. Launc
 it opens a Tkinter-based desktop application that exposes the same functionality as
 the CLI:
 
+```
 ```bash
 filezipper-gui
 ```

@@ -15,6 +15,7 @@ No web server, no GUI toolkits, no frameworks.
 2. **Download this project.** Press the green *Code* button on GitHub and choose
    *Download ZIP*. Unzip it somewhere easy to find (Desktop is fine).
 3. **Run the helper.**
+   - Keep `run_filezipper.py` in the same folder as the `filezipper` directory.
    - Windows: double-click `run_filezipper.py`.
    - macOS/Linux: open a terminal in the folder and run `python run_filezipper.py`.
 

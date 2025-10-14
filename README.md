@@ -2,7 +2,8 @@
 
 FileZipper is a simple command line tool that bundles files and directories into ZIP
 archives and optionally copies the resulting archive to one or more destinations
-(e.g. a synced cloud storage folder).
+(e.g. a synced cloud storage folder). A desktop GUI is also provided for users who
+prefer a point-and-click workflow.
 
 ## Installation
 
@@ -16,6 +17,12 @@ Alternatively, you can run the module directly without installing:
 
 ```bash
 python -m filezipper.cli <sources>
+```
+
+To launch the graphical interface without installing, use:
+
+```bash
+python -m filezipper.gui
 ```
 
 ## Usage
@@ -51,6 +58,27 @@ Specify an explicit output path and create multiple copies:
 python -m filezipper.cli ./data -o ./backups/data.zip \
   --cloud-destination ./drive --cloud-destination ./offsite
 ```
+
+## Graphical interface
+
+After installing the package a `filezipper-gui` command becomes available. Launching
+it opens a Tkinter-based desktop application that exposes the same functionality as
+the CLI:
+
+```bash
+filezipper-gui
+```
+
+Within the GUI you can:
+
+- Add files or folders to the archive source list.
+- Choose an output file name or target directory.
+- Select optional copy destinations (such as synced cloud folders).
+- Decide whether hidden files should be included.
+- View a running log of archive creation and copy operations.
+
+When the archive is created, any configured destinations receive a copy of the
+resulting ZIP file automatically.
 
 ## Development
 

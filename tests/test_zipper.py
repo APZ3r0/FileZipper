@@ -5,6 +5,12 @@ import zipfile
 from pathlib import Path
 
 import unittest
+from unittest import mock
+
+import tkinter as tk
+
+from filezipper.zipper import copy_to_locations, create_archive
+from filezipper import gui
 
 from filezipper.zipper import copy_to_locations, create_archive
 
@@ -42,6 +48,15 @@ class FileZipperTests(unittest.TestCase):
         self.assertEqual({cloud_a.resolve(), cloud_b.resolve()}, {directory for directory, _ in results})
         self.assertTrue((cloud_a / "archive.zip").exists())
         self.assertTrue((cloud_b / "archive.zip").exists())
+
+
+class GuiTests(unittest.TestCase):
+    def test_main_exits_cleanly_when_display_unavailable(self) -> None:
+        with mock.patch("tkinter.Tk", side_effect=tk.TclError("no display")):
+            with self.assertRaises(SystemExit) as cm:
+                gui.main()
+
+        self.assertIn("Ensure a graphical display is available", str(cm.exception))
 
 
 if __name__ == "__main__":

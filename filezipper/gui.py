@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import sys
 import threading
 import tkinter as tk
 from dataclasses import dataclass
@@ -9,6 +10,10 @@ from pathlib import Path
 from tkinter import filedialog, messagebox, ttk
 from typing import Iterable, List
 
+if __package__ in {None, ""}:  # pragma: no cover - exercised via script execution
+    sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from filezipper.zipper import copy_to_locations, create_archive
 from .zipper import copy_to_locations, create_archive
 
 
@@ -211,6 +216,13 @@ class FileZipperApp:
 
 
 def main() -> None:
+    try:
+        root = tk.Tk()
+    except tk.TclError as exc:  # pragma: no cover - exercised via unit test with mock
+        message = "Unable to initialize the FileZipper GUI. Ensure a graphical display is available."
+        raise SystemExit(message) from exc
+
+    FileZipperApp(root)
     root = tk.Tk()
     app = FileZipperApp(root)
     root.mainloop()

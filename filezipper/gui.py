@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import sys
 import threading
 import tkinter as tk
 from dataclasses import dataclass
@@ -9,7 +10,10 @@ from pathlib import Path
 from tkinter import filedialog, messagebox, ttk
 from typing import Iterable, List
 
-from .zipper import copy_to_locations, create_archive
+if __package__ in {None, ""}:  # pragma: no cover - exercised via script execution
+    sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from filezipper.zipper import copy_to_locations, create_archive
 
 
 @dataclass

@@ -3,10 +3,14 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from pathlib import Path
 from typing import Sequence
 
-from .zipper import copy_to_locations, create_archive
+if __package__ in {None, ""}:  # pragma: no cover - exercised via script execution
+    sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from filezipper.zipper import copy_to_locations, create_archive
 
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:

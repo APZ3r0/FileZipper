@@ -27,6 +27,8 @@ def _prepare_path() -> None:
 
 def _run_cli() -> int:
     """Launch the text-based helper and keep the console visible."""
+def _launch() -> int:
+    _prepare_path()
 
     try:
         from filezipper.cli import main as cli_main
@@ -70,3 +72,18 @@ def _launch() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(_launch())
+if __name__ == "__main__":
+    raise SystemExit(_launch())
+"""Launch the FileZipper helper in a way that keeps the window open when run directly."""
+
+from __future__ import annotations
+
+from filezipper.cli import main
+
+if __name__ == "__main__":
+    exit_code = main()
+    try:
+        input("\nPress Enter to close this window.")
+    except EOFError:
+        pass
+    raise SystemExit(exit_code)

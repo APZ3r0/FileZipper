@@ -39,7 +39,7 @@ def create_zip(source: Path, output: Path | None = None) -> Path:
         else:
             contains_files = False
             for item in sorted(src.rglob("*")):
-                if item.is_file():
+               https://github.com/APZ3r0/FileZipper/pull/6/conflict?name=pyproject.toml&base_oid=0a8012ac3ab31d6bfdc23b3c782a4de6a4e10a5c&head_oid=460ce75c4cbcd866dae3b1ab67795da0949ce38d if item.is_file():
                     contains_files = True
                     arcname = item.relative_to(src)
                     zf.write(item, arcname=str(Path(src.name) / arcname))

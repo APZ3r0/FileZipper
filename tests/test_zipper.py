@@ -2,10 +2,26 @@ from __future__ import annotations
 
 import tempfile
 import unittest
+from unittest import mock
 import zipfile
 from pathlib import Path
 
 from filezipper.zipper import create_zip, make_copy
+
+
+class RunFileZipperTests(unittest.TestCase):
+    def test_launch_falls_back_to_cli_when_gui_errors(self) -> None:
+        import run_filezipper
+
+        with mock.patch("run_filezipper._prepare_path"), mock.patch(
+            "filezipper.simple_gui.launch", side_effect=RuntimeError("boom")
+        ), mock.patch("run_filezipper.print"), mock.patch(
+            "run_filezipper._run_cli", return_value=0
+        ) as run_cli:
+            exit_code = run_filezipper._launch()
+
+        self.assertEqual(exit_code, 0)
+        run_cli.assert_called_once()
 
 
 class FileZipperTests(unittest.TestCase):

@@ -25,6 +25,8 @@ def _prepare_path() -> None:
         sys.path.insert(0, str(script_dir))
 
 
+def _run_cli() -> int:
+    """Launch the text-based helper and keep the console visible."""
 def _launch() -> int:
     _prepare_path()
 
@@ -50,6 +52,26 @@ def _launch() -> int:
     return exit_code
 
 
+def _launch() -> int:
+    _prepare_path()
+
+    try:
+        from filezipper.simple_gui import launch as launch_gui
+    except ModuleNotFoundError:
+        launch_gui = None
+
+    if launch_gui is not None:
+        try:
+            return launch_gui()
+        except Exception as exc:  # pragma: no cover - defensive guard
+            print("I couldn't open the easy window, so I'll switch to the text helper instead.")
+            print(f"Reason: {exc}")
+
+    return _run_cli()
+
+
+if __name__ == "__main__":
+    raise SystemExit(_launch())
 if __name__ == "__main__":
     raise SystemExit(_launch())
 """Launch the FileZipper helper in a way that keeps the window open when run directly."""
